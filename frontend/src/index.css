@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@theme {
+  --color-bg:#04050F; --color-panel:#0B1220; --color-card:#111B2E; --color-line:#2A3160;
+  --color-cyan:#22D3EE; --color-teal:#14B8A6; --color-indigo:#818CF8; --color-ok:#22C55E; --color-wall:#F97316;
+  --color-bad:#EF4444; --color-ink:#F8FAFC; --color-mute:#94A3B8;
+  --font-sans:'Manrope',system-ui,sans-serif;
+}
+body{background:#050914;color:#F8FAFC;font-family:var(--font-sans);margin:0;-webkit-font-smoothing:antialiased}
+/* space backdrop: nebula clouds, stars, shooting stars */
+.space{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:
+  radial-gradient(ellipse 60% 50% at 10% 5%,rgba(124,58,237,.40),transparent 70%),
+  radial-gradient(ellipse 50% 45% at 95% 15%,rgba(37,99,235,.32),transparent 70%),
+  radial-gradient(ellipse 55% 50% at 5% 95%,rgba(219,39,119,.24),transparent 70%),
+  radial-gradient(ellipse 50% 45% at 90% 95%,rgba(20,184,166,.20),transparent 70%),#04050F}
+.stars,.stars2{position:absolute;inset:0}
+.stars{background-image:radial-gradient(1.8px 1.8px at 20px 30px,#fff,transparent),radial-gradient(1.4px 1.4px at 90px 120px,#e2e8f0,transparent),radial-gradient(2.2px 2.2px at 160px 70px,#fff,transparent),radial-gradient(1.5px 1.5px at 230px 200px,#cbd5e1,transparent),radial-gradient(1.6px 1.6px at 60px 210px,#fff,transparent),radial-gradient(1.4px 1.4px at 300px 90px,#f1f5f9,transparent);
+  background-size:240px 240px,310px 310px,180px 180px,270px 270px,350px 350px,330px 330px}
+.stars2{background-image:radial-gradient(2.6px 2.6px at 40px 60px,#a5f3fc,transparent),radial-gradient(2.4px 2.4px at 130px 160px,#fde68a,transparent),radial-gradient(2.4px 2.4px at 200px 20px,#fbcfe8,transparent);
+  background-size:290px 290px,370px 370px,420px 420px;animation:twinkle 4s ease-in-out infinite alternate}
+.shoot{position:absolute;width:130px;height:2px;background:linear-gradient(90deg,transparent,#fff);opacity:0;animation:shoot 9s linear infinite}
+@keyframes shoot{0%{transform:translate(0,0) rotate(25deg);opacity:0}2%{opacity:1}12%{transform:translate(460px,215px) rotate(25deg);opacity:0}100%{opacity:0}}
+@keyframes twinkle{from{opacity:.3}to{opacity:1}}
+.card{background:rgba(10,12,32,.72);backdrop-filter:blur(10px);border:1px solid rgba(129,140,248,.28);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:40px;padding:0 .85rem;border-radius:10px;
+  background:rgba(5,9,20,.7);border:1px solid #2A3160;font-size:.84rem;font-weight:600;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn:hover:not(:disabled){border-color:#22D3EE;color:#22D3EE}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn[aria-pressed=true]{border-color:#22D3EE;color:#22D3EE;background:rgba(34,211,238,.12)}
+.btn.primary{background:#22D3EE;border-color:#22D3EE;color:#050914}
+.btn.primary:hover:not(:disabled){background:#67e8f9;color:#050914}
+.seg{display:grid;gap:4px;padding:4px;background:rgba(5,9,20,.7);border:1px solid #2A3160;border-radius:12px}
+.seg button{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.5rem .4rem;border-radius:9px;font-size:.8rem;font-weight:600;color:#94A3B8;cursor:pointer;border:1px solid transparent;transition:all .15s}
+.seg button:hover{color:#F8FAFC}
+.seg button[aria-pressed=true]{background:#111B2E;color:#22D3EE;border-color:rgba(34,211,238,.45)}
+.h4{font-size:.75rem;font-weight:700;color:#94A3B8;margin-bottom:.5rem}
+:focus-visible{outline:2px solid #22D3EE;outline-offset:2px}
+input[type=range]{accent-color:#22D3EE;width:100%}
+[data-tip]{position:relative}
+[data-tip]:hover::after,[data-tip]:focus-visible::after{content:attr(data-tip);position:absolute;z-index:60;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);
+  width:max-content;max-width:230px;white-space:normal;text-align:left;background:#050914;border:1px solid #2A3160;color:#F8FAFC;font-size:.72rem;font-weight:500;
+  padding:.4rem .6rem;border-radius:8px;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
